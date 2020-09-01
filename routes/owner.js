@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const Owner = require("../models/owner");
 
-router.post("/newOwner", auth, function (req, res, next) {
+router.post("/newOwner", function (req, res, next) {
   const addOwner = new Owner({
     name: req.body.name,
     location: req.body.location,

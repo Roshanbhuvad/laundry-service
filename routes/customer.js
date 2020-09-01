@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const Customer = require("../models/customer");
 
-router.post("/newUser", auth, function (req, res, next) {
+router.post("/newUser", function (req, res, next) {
   const addOwner = new Customer({
     name: req.body.name,
     phoneNumber: req.body.phoneNumber,
