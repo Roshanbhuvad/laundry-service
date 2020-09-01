@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth");
 const Owner = require("../models/owner");
 
-router.post("/newOwner", function (req, res, next) {
+router.post("/newOwner", auth, function (req, res, next) {
   const addOwner = new Owner({
     name: req.body.name,
     location: req.body.location,
@@ -29,7 +30,7 @@ router.post("/newOwner", function (req, res, next) {
         });
     });
 });
-router.put("/newOwner/:id", function (req, res, next) {
+router.put("/newOwner/:id", auth, function (req, res, next) {
   Owner.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(function () {
       Owner.findOne({ _id: req.params.id }).then(function (result) {
@@ -39,7 +40,7 @@ router.put("/newOwner/:id", function (req, res, next) {
     .catch(next);
 });
 
-router.delete("/newOwner/:id", function (req, res, next) {
+router.delete("/newOwner/:id", auth, function (req, res, next) {
   const deleteOwner = Owner.findById(req.params.id);
   if (deleteOwner) {
     deleteOwner.remove();
