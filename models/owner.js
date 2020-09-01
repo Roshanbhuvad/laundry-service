@@ -37,6 +37,6 @@ const ownerSchema = new Schema({
   geometry: GeoSchema,
 });
 
-const laundry = mongoose.model("Owner", ownerSchema);
+const Owner = mongoose.model("Owner", ownerSchema);
 
-module.exports = laundry;
+module.exports = Owner;
