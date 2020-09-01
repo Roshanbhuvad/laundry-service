@@ -1,10 +1,11 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const PORT = 5000;
-const { MONGOURI } = require("./key");
 
-const app = express();
+const { MONGOURI } = require("./key");
+//const { request } = require("express");
 
 app.use(bodyParser.json());
 
